@@ -1,24 +1,3 @@
-en memoria tener variable 
-POSICION_BOMBAS: .byte 1,3,5,9,10,20,34,56
-
-// r1 = valor del nivel
-// r2 = valor de la mapa 
-calcuar cantidad bombas
-
-// generar el vector con las posiciones random
-en que posiciones
-
-
-// poner en el mapa las bombas
-
-//para saber las bombas aledañas de una posicion pasada debemos sumarle 1 para saber la posicion de atras de la posicion
-
-
-
-
-
-
-
 //---------------------------------------------Obtener valor numerico de una cadena de numeros---------------------------------------------
 
     ldr r0, =cadena_numeros      
@@ -41,24 +20,21 @@ ciclo:
 salir:
     ldr r6, =resultado
     str r4, [r6]
-
-
-
 -----------------------------------------------------------------------------------------------------------------------------
 
-r7=> tengo un valor random          0 a 15
-r8=> tengo otro valor random        0 a 5 si es nivel_chico // 0 a 10 si es nivel_grande
-r4=> contador de bombas generadoas
-
-multiplicar r7 y r8 y dejo en r0 
-
-si estoy en nivel chico me fijo si es mayor o igual a 64
-si estoy en nivel medio me fijo si es mayor o igual a 144
-
-si es mayor a uno de estos valores o este valor ya esta en el vector -> no sumo bomba, no escribo numero en vector, empiezo el random devuelta
-sino => sumo una bomba, escribo el numero en el vector, empiezo el random devuelta
+ingresamos mapa y nivel y calcula la cantidad de bombas para ambos niveles
+generara bombas para mapa de 8x8 (falta arreglar validaciones)
 
 
+
+
+Falta arreglar subir a memoria la cantidad de minas del nivel (actualmente se guarda en r5)
+
+arreglar validaciones de numeros randoms para las bombas (tarda mucho en iterar)
+
+generar numeros randoms para mapas 12x12 (vector)
+
+arrancar flujo fila y columna
 
 -------------------------------------------------------------------
         ciclo_generar_randoms_ocho:
@@ -117,3 +93,5 @@ sino => sumo una bomba, escribo el numero en el vector, empiezo el random devuel
 
         continuar_flujo:     //r8 entre 0 y 6/10 y r7 entre 0 y 15
         //seguimos
+
+--------------------------------------------------------------
