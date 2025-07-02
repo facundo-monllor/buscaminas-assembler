@@ -1,9 +1,67 @@
 .data
 
 
-PRESENTACION: .asciz "\nBIENVENIDOS AL BUSCAMINAS ARM\nEN ESTE JUEGO TENDRAN QUE DESCUBRIR TODAS LAS CASILLAS QUE NO TENGAN MINAS, SINO...\nBOOOOOOOOOOOOOOOOOM\nPARA ELEGIR LAS CASILLAS INGRESE LA COLUMNA Y LA FILA CORRESPONDIENTE, SUERTE!!\n\n"   
-LONGITUD_PRESENTACION= .-PRESENTACION
+MENSAJE_PRESENTACION: .asciz "\nBIENVENIDOS AL BUSCAMINAS ARM\nEN ESTE JUEGO TENDRAN QUE DESCUBRIR TODAS LAS CASILLAS QUE NO TENGAN MINAS, SINO...\nBOOOOOOOOOOOOOOOOOM\nPARA ELEGIR LAS CASILLAS INGRESE LA COLUMNA Y LA FILA CORRESPONDIENTE, SUERTE!!\n\n"   
+LONGITUD_MENSAJE_PRESENTACION= .-MENSAJE_PRESENTACION
 
+MENSAJE_PRESENTACION_DIBUJO: .asciz "                                                                                             .         .                                                                \n\
+8 888888888o   8 8888      88    d888888o.       ,o888888o.           .8.                   ,8.       ,8.          8 8888 b.             8          .8.            d888888o.   \n\
+8 8888    `88. 8 8888      88  .`8888:' `88.    8888     `88.        .888.                 ,888.     ,888.         8 8888 888o.          8         .888.         .`8888:' `88. \n\
+8 8888     `88 8 8888      88  8.`8888.   Y8 ,8 8888       `8.      :88888.               .`8888.   .`8888.        8 8888 Y88888o.       8        :88888.        8.`8888.   Y8 \n\
+8 8888     ,88 8 8888      88  `8.`8888.     88 8888               . `88888.             ,8.`8888. ,8.`8888.       8 8888 .`Y888888o.    8       . `88888.       `8.`8888.     \n\
+8 8888.   ,88' 8 8888      88   `8.`8888.    88 8888              .8. `88888.           ,8'8.`8888,8^8.`8888.      8 8888 8o. `Y888888o. 8      .8. `88888.       `8.`8888.    \n\
+8 8888888888   8 8888      88    `8.`8888.   88 8888             .8`8. `88888.         ,8' `8.`8888' `8.`8888.     8 8888 8`Y8o. `Y88888o8     .8`8. `88888.       `8.`8888.   \n\
+8 8888    `88. 8 8888      88     `8.`8888.  88 8888            .8' `8. `88888.       ,8'   `8.`88'   `8.`8888.    8 8888 8   `Y8o. `Y8888    .8' `8. `88888.       `8.`8888.  \n\
+8 8888      88 ` 8888     ,8P 8b   `8.`8888. `8 8888       .8' .8'   `8. `88888.     ,8'     `8.`'     `8.`8888.   8 8888 8      `Y8o. `Y8   .8'   `8. `88888.  8b   `8.`8888. \n\
+8 8888    ,88'   8888   ,d8P  `8b.  ;8.`8888    8888     ,88' .888888888. `88888.   ,8'       `8        `8.`8888.  8 8888 8         `Y8o.`  .888888888. `88888. `8b.  ;8.`8888 \n\
+8 888888888P      `Y88888P'    `Y8888P ,88P'     `8888888P'  .8'       `8. `88888. ,8'         `         `8.`8888. 8 8888 8            `Yo .8'       `8. `88888. `Y8888P ,88P' \n"   
+LONGITUD_MENSAJE_PRESENTACION_DIBUJO= .-MENSAJE_PRESENTACION_DIBUJO
+
+MENSAJE_JUEGO_TERMINADO_DIBUJO: .asciz "\n  ____   ____   ____   ____   ____   ____   ____   ____   ____   ____   ____  __  __                      \n\
+ |  _ \\ / __ \\ / __ \\ / __ \\ / __ \\ / __ \\ / __ \\ / __ \\ / __ \\ / __ \\ / __ \\|  \\/  |                     \n\
+ | |_) | |  | | |  | | |  | | |  | | |  | | |  | | |  | | |  | | |  | | |  | | \\  / |                     \n\
+ |  _ <| |  | | |  | | |  | | |  | | |  | | |  | | |  | | |  | | |  | | |  | | |\\/| |                     \n\
+ | |_) | |__| | |__| | |__| | |__| | |__| | |__| | |__| | |__| | |__| | |__| | |  | |                     \n\
+ |____/_\\____/_\\____/_\\____/ \\____/ \\____/_\\____/_\\____/_\\____/ \\____/_\\____/|_|  |_|   _____   ____  _ _ \n\
+      | | |  | |  ____/ ____|/ __ \\  |__   __|  ____|  __ \\|  \\/  |_   _| \\ | |   /\\   |  __ \\ / __ \\| | |\n\
+      | | |  | | |__ | |  __| |  | |    | |  | |__  | |__) | \\  / | | | |  \\| |  /  \\  | |  | | |  | | | |\n\
+  _   | | |  | |  __|| | |_ | |  | |    | |  |  __| |  _  /| |\\/| | | | | . ` | / /\\ \\ | |  | | |  | | | |\n\
+ | |__| | |__| | |___| |__| | |__| |    | |  | |____| | \\ \\| |  | |_| |_| |\\  |/ ____ \\| |__| | |__| |_|_|\n\
+  \\____/ \\____/|______\\_____|\\____/     |_|  |______|_|  \\_\\_|  |_|_____|_| \\_/_/    \\_\\_____/ \\____/(_|_)\n\
+                                                                                                          \n\
+                                                                                                          \n"
+LONGITUD_MENSAJE_JUEGO_TERMINADO_DIBUJO= .-MENSAJE_JUEGO_TERMINADO_DIBUJO
+
+MENSAJE_JUEGO_GANADO_DIBUJO: .asciz "\n  ________   _______ ______ _      ______ _   _ _______ ______        _ _    _ ______ _____  ____  \n\
+ |  ____\\ \\ / / ____|  ____| |    |  ____| \\ | |__   __|  ____|      | | |  | |  ____/ ____|/ __ \\ \n\
+ | |__   \\ V / |    | |__  | |    | |__  |  \\| |  | |  | |__         | | |  | | |__ | |  __| |  | |\n\
+ |  __|   > <| |    |  __| | |    |  __| | . ` |  | |  |  __|    _   | | |  | |  __|| | |_ | |  | |\n\
+ | |____ / . \\ |____| |____| |____| |____| |\\  |  | |  | |____  | |__| | |__| | |___| |__| | |__| |\n\
+ |______/_/ \\_\\_____|______|______|______|_| \\_|  |_|  |______|  \\____/ \\____/|______\\_____|\\____/ \n\
+ | |  | |   /\\    / ____|  / ____|   /\\   | \\ | |   /\\   |  __ \\ / __ \\ / __ \\ / __ \\| | | | |     \n\
+ | |__| |  /  \\  | (___   | |  __   /  \\  |  \\| |  /  \\  | |  | | |  | | |  | | |  | | | | | |     \n\
+ |  __  | / /\\ \\  \\___ \\  | | |_ | / /\\ \\ | . ` | / /\\ \\ | |  | | |  | | |  | | |  | | | | | |     \n\
+ | |  | |/ ____ \\ ____) | | |__| |/ ____ \\| |\\  |/ ____ \\| |__| | |__| | |__| | |__| |_|_|_|_|     \n\
+ |_|  |_/_/    \\_\\_____/   \\_____/_/    \\_\\_| \\_/_/    \\_\\_____/ \\____/ \\____/ \\____/(_|_|_|_)     \n\
+                                                                                                  \n\
+                                                                                                  \n"
+LONGITUD_MENSAJE_JUEGO_GANADO_DIBUJO= .-MENSAJE_JUEGO_GANADO_DIBUJO
+
+MENSAJE_JUEGO_TERMINADO_INFORMATIVO: .asciz "\nMUCHAS GRACIAS POR JUGAR, ESPERAMOS QUE TE HAYA GUSTADO ESTE SUPER BUSCAMINAS\n"
+LONGITUD_MENSAJE_JUEGO_TERMINADO_INFORMATIVO= .-MENSAJE_JUEGO_TERMINADO_INFORMATIVO
+
+MENSAJE_POSICION_YA_COLOCADA: .asciz "\nFLACO PUSISTE UNA POSICION YA INGRESADA\n\n"   
+LONGITUD_MENSAJE_POSICION_YA_COLOCADA= .-MENSAJE_POSICION_YA_COLOCADA
+
+//-------------------------------MENSAJES DE BOMBAS FALTANTES-------------------------------//
+MENSAJE_BOMBAS_FALTANTES_UNO: .asciz "\nTE FALTAN DESCUBRIR "
+LONGITUD_MENSAJE_BOMBAS_FALTANTES_UNO= .-MENSAJE_BOMBAS_FALTANTES_UNO
+
+MENSAJE_BOMBAS_FALTANTES_VALOR: .asciz "   "
+
+MENSAJE_BOMBAS_FALTANTES_DOS: .asciz " BOMBAS PARA GANAR\n"
+LONGITUD_MENSAJE_BOMBAS_FALTANTES_DOS= .-MENSAJE_BOMBAS_FALTANTES_DOS
+////////////////////////////////////////////////////////////////////////////////////////////
 
 PEDIR_NOMBRE: .asciz "INGRESE SU NOMBRE:       (no mas de 20 maracteres)\n"
 LONGITUD_PEDIR_NOMBRE= .-PEDIR_NOMBRE
@@ -93,6 +151,7 @@ push {r0, r7, lr}
         mov r7, #4
         mov r0, #1
         swi 0
+        
 pop {r0, r7, lr}
 bx lr
 .fnend
@@ -347,9 +406,9 @@ bx lr
 //////////////////////////////////////////////////////////////////////////////////////////////////
 // salida => r3 el valor numerico de la fila
 // salida => r4 el valor numerico de la columna
-pedir_numero_de_fila_y_comuna:
+pedir_numero_de_fila_y_columna:
 .fnstart
-    push {r1,r2,r7,lr}
+    push {r1, r2, r7, lr}
         
         ldr r1, =PEDIR_FILA                 // aparece en pantalla mensaje de pedir fila
         mov r2, $LONGITUD_PEDIR_FILA
@@ -375,12 +434,13 @@ pedir_numero_de_fila_y_comuna:
 
         mov r0, r1                              // direccion del valor ingresado por el usuario
         bl caracter_numerico_a_decimal          // llamamos la subrutina que lo convierte
-                                                // en r4 tenemos el valor numerico de la columna
+        sub r4, #1                              // restamos uno a la columna  // en r4 tenemos el valor numerico de la columna
+        
         //imprime pedir fila, pide fila por teclado y comvierte el caracter ingresado en valor numerico
 
         //hasta aca ya tenemos los valores numericos en los registros r3 y r4
         //en r3 el numero de fila, En r4 el numero de columna
-pop {r1,r2,r7,lr}
+pop {r1, r2, r7, lr}
 bx lr
 .fnend
 //////////////////////////////////////////////////////////////////////////////////////////////////
@@ -427,11 +487,11 @@ bx lr
 //r1 recibe la direccion del tamaño del mapa
 //r3 recibe la fila
 //r4 recibe la columna
-// salida => r5 posicion ingresada
+//salida => r5 posicion ingresada
 calcular_posicion:
 .fnstart
 push {r2, r3, r6, r7, lr}
-    
+        
         ldrb r2, [r1]                                    // tomamos el valor del ni
         cmp r2, #'1'
         beq calcular_posicion_mapa_ocho                  // si el mapa es 8x8
@@ -469,18 +529,258 @@ bx lr
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-//validar posicion
-//cadena con 120 posicion//devuelve 1 si ya eligio la posicion y 0 si no
+//////////////////////////////////////////////////////////////////////////////////////////////////
+//r5 => esta la posicion ingresada por el usuario en numero
+//devuelve en r8 1 si ya eligio la posicion y 0 si no
+validar_y_agregar_posicion_ingresada:
+.fnstart
+push {r1, r2, r7, lr}
+        ldr r1, =POSICIONES_INGRESADAS_USUARIO
+        ldrb r2, [r1, r5]               // valor del item
 
+        cmp r2, #'-'            //si r2 es un '-' salta a la etiqueta y guarda en r8 un cero que equivale a un false. 
+        beq no_ingreso_la_posicion
+        mov r8, #1                                   // si el usuario ya coloco esta posicion se termina la subrutina
+        bal salir_validar_posicion_ingresada
+
+        no_ingreso_la_posicion:
+        mov r8, #0
+        mov r7, #'X'
+        strb r7, [r1, r5]
+
+salir_validar_posicion_ingresada:
+pop {r1, r2, r7, lr}
+bx lr
+.fnend
+//////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////
+//r3 => recibe la direccion del mapa con bombas
+//r5 => esta la posicion de la bomba
+//devuelve en r8 0 si la posicion no tiene bomba,  1 si la posicion tiene bomba.
+chequeamos_bomba_mapa:
+.fnstart
+push {r4, lr}
+        ldrb r4, [r3, r5]
+        cmp r4, #'-'                        // si es - no hay bomba y sale con r8 en 0
+        beq no_hay_bomba_en_posicion
+        
+        mov r8, #1                          // si no es -, es X por lo que hay bomba y sale con r8 en 1
+        bal salir_chequeamos_bomba_mapa
+
+        no_hay_bomba_en_posicion:
+        mov r8, #0
+    
+salir_chequeamos_bomba_mapa:
+pop {r4, lr}
+bx lr
+.fnend
+//////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////
+//r1 => el mapa con las bombas 
+//r4 => la cantidad para moverse arriba y abajo
+//r5 => la posicion elegida
+//devuelve en r8 la cantidad de bombas aledanias a la posicion.
+calcular_bombas_aledanias:
+.fnstart
+push {r2, r5, r6, lr}
+    
+        mov r8, #0      //contador de bombas aledanias
+        mov r6, r5      // auxiliar para permanecer el valor de r5 inicial
+
+        sub r5, #1              
+        ldrb r2, [r1, r5]       //obtenemos la posicion anterior
+        cmp r2, #'X'
+        bne sumar_bomba_posterior       // si no es X va a la siguiente
+        add r8, #1                      // suma uno al contador
+         
+        sumar_bomba_posterior:
+        mov r5, r6   
+        add r5, #1
+        ldrb r2, [r1, r5]      // obtenemos la posicion posterior
+        cmp r2, #'X'
+        bne sumar_bomba_arriba          // si no es X va a la siguiente
+        add r8, #1                      // suma uno al contador
+
+        sumar_bomba_arriba:
+        mov r5, r6   
+        sub r5, r4
+        ldrb r2, [r1, r5]      // obtenemos la posicion de arriba
+        cmp r2, #'X'
+        bne sumar_bomba_abajo          // si no es X va a la siguiente
+        add r8, #1                      // suma uno al contador
+
+        sumar_bomba_abajo:
+        mov r5, r6   
+        add r5, r4
+        ldrb r2, [r1, r5]      // obtenemos la posicion de abajo
+        cmp r2, #'X'
+        bne fin_calcular_bombas_aledanias   // si no es X va a la siguiente
+        add r8, #1                          // suma uno al contador
+
+fin_calcular_bombas_aledanias:
+add r8, #0x30
+pop {r2, r5, r6, lr}
+bx lr
+.fnend
+//////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////
+//r10 => devuelve la cantidad de lugares a detectar
+cantidad_lugares_a_detectar:
+.fnstart
+push {r2, r3, lr}
+        ldr r3, =NIVEL_SELECCIONADO // direccion del nivel seleccionado
+        ldrb r2, [r3]
+        mov r10, #0                      //cantidad de lugares a detectar sin minas para ganar
+
+        cmp r2 , #0x31
+        bne cantidad_lugares_intermedio
+        mov r10, #10                         // si es el nivel inicial
+        bal salir_calcular_lugares
+        
+
+        cantidad_lugares_intermedio:
+        cmp r2 , #0x32
+        bne cantidad_lugares_final
+        mov r10, #20                         // si es el nivel intermedio
+        bal salir_calcular_lugares
+
+
+        cantidad_lugares_final:
+        mov r10, #25                         // si es el nivel final
+
+salir_calcular_lugares:
+pop {r2, r3, lr}
+bx lr
+.fnend
+//////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////
+//r1 recibe la direccion del mapa del usuario
+//r3 recibe la direccion del mapa del con bombas
+//r2 recibe la longitud del mapa
+//escribe en el mapa del usuario las ubicaciones de las bombas
+juntar_mapa_usuario_bomba:
+.fnstart
+push {r2, r3, r4, r6, lr}    
+    mov r6, #0                      //contador de posiciones
+     
+    ciclo_juntar_mapa: 
+    cmp r6, r2                      // si ya itero el mapa entero sale
+    beq salir_juntar_mapa
+
+    ldrb r4, [r3,r6]                // 'X' o '-'
+    cmp r4, #'X'                    
+    beq escribir_mapa_usuario       // si hay una bomba la ingresa en el mapa del usuario
+
+    add r6, #1                      // aumentamos el contador
+    bal ciclo_juntar_mapa
+
+    escribir_mapa_usuario:
+    strb r4, [r1, r6]                   // escribe la X             
+    add r6, #1
+    bal ciclo_juntar_mapa
+
+salir_juntar_mapa:
+pop {r2, r3, r4, r6, lr}
+bx lr
+.fnend
+//////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////
+//r10 => recibe la cantidad de bombas totales
+//r11 => recibe la cantidad de bombas ingresadas por el usuario
+imprimir_bombas_faltantes:
+.fnstart
+push {r1, r2, r4, r7, lr}
+
+        mov r7, #0
+        sub r7, r10, r11      // en r7 guardo las bombas faltantes
+        ldr r1, =MENSAJE_BOMBAS_FALTANTES_VALOR
+        strb r7, [r1]
+        
+        ldr r1, =MENSAJE_BOMBAS_FALTANTES_UNO
+        mov r2, $LONGITUD_MENSAJE_BOMBAS_FALTANTES_UNO
+        bl imprimir
+
+        mov r4, #12
+        ldr r1, =MENSAJE_BOMBAS_FALTANTES_VALOR
+        mov r2, r4
+        bl imprimir
+        
+        ldr r1, =MENSAJE_BOMBAS_FALTANTES_DOS
+        mov r2, $LONGITUD_MENSAJE_BOMBAS_FALTANTES_DOS
+        bl imprimir
+
+        
+pop {r1, r2, r4, r7, lr}
+bx lr
+.fnend
+//////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////
+//r3 => recibe la direccion del mapa con bombas
+terminar_juego:
+.fnstart
+push {r1, r2, lr}
+        ldr r1, =MENSAJE_JUEGO_TERMINADO_DIBUJO                       // mostramos dibujo de juego finalizado
+        mov r2, $LONGITUD_MENSAJE_JUEGO_TERMINADO_DIBUJO
+        bl imprimir
+
+        ldr r1, =MENSAJE_JUEGO_TERMINADO_INFORMATIVO                  // mostramos mensaje de juego finalizado
+        mov r2, $LONGITUD_MENSAJE_JUEGO_TERMINADO_INFORMATIVO
+        bl imprimir
+pop {r1, r2, lr}
+bx lr
+.fnend
+//////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////
+//r3 => recibe la direccion del mapa con bombas
+ganar_juego:
+.fnstart
+push {r1, r2, lr}
+
+        ldr r1, =MENSAJE_JUEGO_GANADO_DIBUJO                          // mostramos dibujo de juego ganado
+        mov r2, $LONGITUD_MENSAJE_JUEGO_GANADO_DIBUJO
+        bl imprimir
+
+        ldr r1, =MENSAJE_JUEGO_TERMINADO_INFORMATIVO                  // mostramos mensaje de juego finalizado
+        mov r2, $LONGITUD_MENSAJE_JUEGO_TERMINADO_INFORMATIVO
+        bl imprimir
+pop {r1, r2, lr}
+bx lr
+.fnend
+//////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 .global main
 main:
 
-//------------------------------------------presentacion, ingresar nombre, dificultad y tamaño de mapa-------------------------------------------//
+//------------------------------------------ Presentacion, ingresar nombre, dificultad y tamanio de mapa -------------------------------------------//
 
-        ldr r1, =PRESENTACION
-        mov r2, $LONGITUD_PRESENTACION
+        ldr r1, =MENSAJE_PRESENTACION_DIBUJO
+        mov r2, $LONGITUD_MENSAJE_PRESENTACION_DIBUJO
+        bl imprimir
+
+        ldr r1, =MENSAJE_PRESENTACION
+        mov r2, $LONGITUD_MENSAJE_PRESENTACION
         bl imprimir
 
 
@@ -534,28 +834,149 @@ main:
 
 
 
-//----------------------------------------------------------------pedir fila y columna----------------------------------------------------------------------//
+//---------------------------------------------------------- Pedir fila y columna -----------------------------------------------------------------//
 
-        bl pedir_numero_de_fila_y_comuna
+        bl cantidad_lugares_a_detectar                 //en r10 tenemos la cantidad de lugares a detectar
+        mov r11, #0                                    //cantidad de posiciones ingresadas por el usuario
+        
+        pedir_filas_columnas: 
+        cmp r10, r11
+        beq llamar_ganar_juego
+        
+        bl imprimir_bombas_faltantes            // imprimimos la cantidad de bombas restantes para ganar
+
+        bl pedir_numero_de_fila_y_columna
         //saliendo de la subrutina nos quedan en r3 el numero de fila y en r4 numero de columna
 
         ldr r1, =TAMANIO_SELECCIONADO
-        bl calcular_posicion          //calculo para obtener posicion
-
-
-
+        bl calcular_posicion                //calculo para obtener posicion, la devolvemos en "r5""
 
         
+        bl validar_y_agregar_posicion_ingresada      // validar que no se haya pedido la misma posicion anteriormente
+        cmp r8, #1                                   // si en r8 tenemos 1 volvemos a pedir fila y columna
+        beq posicion_ya_ingresada
+
+        bal omitir_posicion_ya_ingresada
+
+        posicion_ya_ingresada:
+        ldr r1, =MENSAJE_POSICION_YA_COLOCADA                  // mensaje en pantalla
+        mov r2, $LONGITUD_MENSAJE_POSICION_YA_COLOCADA
+        bl imprimir
+        bal pedir_filas_columnas                              // volvemos a pedir fila y columna
+
+        omitir_posicion_ya_ingresada:
+        ldr r0, =TAMANIO_SELECCIONADO
+        ldrb r1, [r0]
+        cmp r1, #0x31                                  // si es el mapa de ocho guardamos esa direccion en memoria
+        beq chequeamos_bomba_mapa_ocho 
+
+        ldr r3, =MAPA_DOCE_BOMBAS
+        bl chequeamos_bomba_mapa
+        bal fin_chequeamos_bomba_mapa
         
+        chequeamos_bomba_mapa_ocho:
+        ldr r3, =MAPA_OCHO_BOMBAS
+        bl chequeamos_bomba_mapa
 
-        // bl validar_posicion_ingresada
-        // validar que no se haya pedido
 
-        // 0 NO ESTA
-        // la guardamos y llamamos al mapa
+        fin_chequeamos_bomba_mapa:                // despues de chequear bombas -> r8 0 si la posicion no tiene bomba,  1 si la posicion tiene bomba.
+        cmp r8, #1                                // si hay bomba
+        beq llamar_terminar_juego
+ 
 
-        // 1 SI ESTA
-        //bal pedir_numero_de_fila_y_comuna
+        ldr r0, =TAMANIO_SELECCIONADO
+        ldrb r1, [r0]
+        cmp r1, #0x31                                  // si es el mapa de ocho guardamos esa direccion en memoria
+        beq contamos_bombas_aledanias_ocho 
 
+        ldr r1, =MAPA_DOCE_BOMBAS                      // en r1 la posicion del mapa doce
+        mov r4, #13                                    // cantidad de posiciones a moverse
+        bl calcular_bombas_aledanias
+
+        ldr r1, =MAPA_DOCE                             // obtenemos el mapa del usuario  y escribimos la cantidad de bombas aledanias
+        strb r8, [r1,r5]
+        bal omitir_contamos_bombas_aledanias_ocho 
+        
+        
+        contamos_bombas_aledanias_ocho:
+        ldr r1, =MAPA_OCHO_BOMBAS                    // en r1 la posicion del mapa ocho
+        mov r4, #9                                   // cantidad de posiciones a moverse
+                                                     
+        bl calcular_bombas_aledanias                 // en r8 devuevle la cantidad de bombas aledanias
+        ldr r1, =MAPA_OCHO                          // obtenemos el mapa del usuario  y escribimos la cantidad de bombas aledanias
+        strb r8, [r1,r5]                             // en r5 ya tenemos la posicio del usuario
+
+
+
+        omitir_contamos_bombas_aledanias_ocho:
+        ldr r0, =TAMANIO_SELECCIONADO
+        ldrb r1, [r0]
+        cmp r1, #0x31                                  // verifica si el mapa del usuario es 8
+        bne mostrar_mapa_usuario_doce                  // si es distinto es 12
+
+        
+        ldr r1, =MAPA_OCHO                              // mostramos mapa del usuario si es 8x8
+        mov r2, $LONGITUD_MAPA_OCHO
+        bl imprimir
+        add r11, #1                                     // sumamos uno al contador de posiciones ingresadas por el usuario
+        bal pedir_filas_columnas                        // volvemos a pedir fila y columna
+
+        mostrar_mapa_usuario_doce:
+        ldr r1, =MAPA_DOCE                              // mostramos mapa del usuario si es 12x12
+        mov r2, $LONGITUD_MAPA_DOCE
+        bl imprimir
+        add r11, #1                                     // sumamos uno al contador de posiciones ingresadas por el usuario
+        bal pedir_filas_columnas                        // volvemos a pedir fila y columna
+
+
+       
+
+
+       
+       ///////////////////////////////////////////////  JUEGO TERMINADO  ////////////////////////////////////////////////////////
+        
+        llamar_terminar_juego:                  //cae aca en el caso de que haya seleccionado una posicion con bomba
+        bl terminar_juego                       //muestra una cadena de que perdio el juego          
+
+        ldr r0, =TAMANIO_SELECCIONADO
+        ldrb r1, [r0]
+        cmp r1, #0x31
+        beq modificar_mapa_ocho
+
+        //------------------------------------------------ Caso 12x12 ----------------------------------------------------------//
+
+        ldr r1, =MAPA_DOCE
+        mov r2, $LONGITUD_MAPA_DOCE
+        ldr r3, =MAPA_DOCE_BOMBAS
+        bl juntar_mapa_usuario_bomba            //agrega las bombas en el mapa del usuario
+       
+        ldr r1, =MAPA_DOCE                              // mostramos mapa del usuario si es 12x12
+        mov r2, $LONGITUD_MAPA_DOCE
+        bl imprimir                             //muestra el mapa del usuario con las bombas agregadas 
+        
+        bal omitir_modificar_mapa_ocho
+
+        //------------------------------------------------ Caso 8x8 ----------------------------------------------------------//
+        
+        modificar_mapa_ocho:
+        ldr r1, =MAPA_OCHO
+        mov r2, $LONGITUD_MAPA_OCHO
+        ldr r3, =MAPA_OCHO_BOMBAS
+        bl juntar_mapa_usuario_bomba            //agrega las bombas en el mapa del usuario
+        
+        ldr r1, =MAPA_OCHO                              // mostramos mapa del usuario si es 8x8
+        mov r2, $LONGITUD_MAPA_OCHO
+        bl imprimir                             //muestra el mapa del usuario con las bombas agregadas 
+        
+        omitir_modificar_mapa_ocho:
+        bal fin_de_todo
+        
+        //--------------------------------------- Fin modificar mapa derrota ---------------------------------------------------//
+
+        llamar_ganar_juego:
+        bl ganar_juego
+
+
+fin_de_todo:
 mov r7, #1
 swi 0
