@@ -1,8 +1,11 @@
 .data
 
 
-MENSAJE_PRESENTACION: .asciz "\nBIENVENIDOS AL BUSCAMINAS ARM\nEN ESTE JUEGO TENDRAN QUE DESCUBRIR TODAS LAS CASILLAS QUE NO TENGAN MINAS, SINO...\nBOOOOOOOOOOOOOOOOOM\nPARA ELEGIR LAS CASILLAS INGRESE LA COLUMNA Y LA FILA CORRESPONDIENTE, SUERTE!!\n\n"   
+MENSAJE_PRESENTACION: .asciz "\n\033[32mBIENVENIDOS AL BUSCAMINAS ARM\nEN ESTE JUEGO TENDRAN QUE DESCUBRIR TODAS LAS CASILLAS QUE NO TENGAN MINAS, SINO...\nBOOOOOOOOOOOOOOOOOM\nPARA ELEGIR LAS CASILLAS INGRESE LA COLUMNA Y LA FILA CORRESPONDIENTE, SUERTE!!\033[0m\n\n"   
 LONGITUD_MENSAJE_PRESENTACION= .-MENSAJE_PRESENTACION
+
+MENSAJE_JUEGO_TERMINADO_INFORMATIVO: .asciz "\n\033[32mMUCHAS GRACIAS POR JUGAR, ESPERAMOS QUE TE HAYA GUSTADO ESTE SUPER BUSCAMINAS\033[0m\n"
+LONGITUD_MENSAJE_JUEGO_TERMINADO_INFORMATIVO= .-MENSAJE_JUEGO_TERMINADO_INFORMATIVO
 
 MENSAJE_PRESENTACION_DIBUJO: .asciz "                                                                                             .         .                                                                \n\
 8 888888888o   8 8888      88    d888888o.       ,o888888o.           .8.                   ,8.       ,8.          8 8888 b.             8          .8.            d888888o.   \n\
@@ -47,45 +50,93 @@ MENSAJE_JUEGO_GANADO_DIBUJO: .asciz "\n  ________   _______ ______ _      ______
                                                                                                   \n"
 LONGITUD_MENSAJE_JUEGO_GANADO_DIBUJO= .-MENSAJE_JUEGO_GANADO_DIBUJO
 
-MENSAJE_JUEGO_TERMINADO_INFORMATIVO: .asciz "\nMUCHAS GRACIAS POR JUGAR, ESPERAMOS QUE TE HAYA GUSTADO ESTE SUPER BUSCAMINAS\n"
-LONGITUD_MENSAJE_JUEGO_TERMINADO_INFORMATIVO= .-MENSAJE_JUEGO_TERMINADO_INFORMATIVO
 
-MENSAJE_POSICION_YA_COLOCADA: .asciz "\nFLACO PUSISTE UNA POSICION YA INGRESADA\n\n"   
-LONGITUD_MENSAJE_POSICION_YA_COLOCADA= .-MENSAJE_POSICION_YA_COLOCADA
 
-//-------------------------------MENSAJES DE BOMBAS FALTANTES-------------------------------//
-MENSAJE_BOMBAS_FALTANTES_UNO: .asciz "\nTE FALTAN DESCUBRIR "
-LONGITUD_MENSAJE_BOMBAS_FALTANTES_UNO= .-MENSAJE_BOMBAS_FALTANTES_UNO
-
-MENSAJE_BOMBAS_FALTANTES_VALOR: .asciz "   "
-
-MENSAJE_BOMBAS_FALTANTES_DOS: .asciz " BOMBAS PARA GANAR\n"
-LONGITUD_MENSAJE_BOMBAS_FALTANTES_DOS= .-MENSAJE_BOMBAS_FALTANTES_DOS
-////////////////////////////////////////////////////////////////////////////////////////////
-
-PEDIR_NOMBRE: .asciz "INGRESE SU NOMBRE:       (no mas de 20 maracteres)\n"
-LONGITUD_PEDIR_NOMBRE= .-PEDIR_NOMBRE
+//------------------------------------------ Pedir usuario ------------------------------------------------------//
+MENSAJE_PEDIR_NOMBRE: .asciz "\033[36mINGRESE SU NOMBRE:       (no mas de 20 maracteres)\033[0m\n"
+LONGITUD_MENSAJE_PEDIR_NOMBRE= .-MENSAJE_PEDIR_NOMBRE
 NOMBRE_JUGADOR: .asciz "                    "
 
 
-PEDIR_NIVEL: .asciz "ELEGIR NIVEL:       (ingrese 1, 2 o 3)\n-1: facil \n-2: intermedio \n-3: dificil\n"
-LONGITUD_PEDIR_NIVEL= .-PEDIR_NIVEL
-NIVEL_SELECCIONADO: .asciz "   "
-
-
-PEDIR_TAMANIO_MAPA: .asciz "ELEGIR TAMAÑO DEL MAPA:       (ingrese 1 o 2)\n-1: 8x8 \n-2: 12x12\n"
-LONGITUD_PEDIR_TAMANIO_MAPA= .-PEDIR_TAMANIO_MAPA
+//------------------------------------------ Pedir tamaño de mapa------------------------------------------------------//
+MENSAJE_PEDIR_TAMANIO_MAPA: .asciz "\033[36mELEGIR TAMAÑO DEL MAPA:       (ingrese 1 o 2)\n-1: 8x8 \n-2: 12x12\033[0m\n"
+LONGITUD_MENSAJE_PEDIR_TAMANIO_MAPA= .-MENSAJE_PEDIR_TAMANIO_MAPA
 TAMANIO_SELECCIONADO: .asciz "   "
 
 
-PEDIR_FILA: .asciz "INGRESE NUMERO DE FILA: \n"
+//------------------------------------------- Consultar modalidad ----------------------------------------------------//
+MENSAJE_CONSULTAR_MODALIDAD: .asciz "\033[36mElIJA EL MODO DE JUEGO:      (ingrese 1 o 2)\n-1: Niveles definido \n-2: Eleji la cantidad de bombas (PARA EXPERTOS, ADIVINAR TODAS LAS CASILLAS SIN BOMBAS!! 😎)\033[0m\n"
+LONGITUD_MENSAJE_CONSULTAR_MODALIDAD= .-MENSAJE_CONSULTAR_MODALIDAD
+MODALIDAD_SELECCIONADA: .asciz "   "
+
+
+//------------------------------------------- Pedir cantidad de bombas-----------------------------------------------//
+MENSAJE_PEDIR_CANTIDAD_DE_BOMBAS: .asciz "\033[36mELIJA LA CANTIDAD DE BOMBAS EN EL MAPA: \033[0m\n"
+LONGITUD_MENSAJE_PEDIR_CANTIDAD_DE_BOMBAS= .-MENSAJE_PEDIR_CANTIDAD_DE_BOMBAS
+CANTIDAD_DE_BOMBAS_SELECCIONADAS: .asciz "   "
+
+
+//------------------------------------------- Pedir nivel ------------------------------------------------------------//
+MENSAJE_PEDIR_NIVEL: .asciz "\033[36mELEGIR NIVEL:       (ingrese 1, 2 o 3)\n-1: facil \n-2: intermedio \n-3: dificil\033[0m\n"
+LONGITUD_MENSAJE_PEDIR_NIVEL= .-MENSAJE_PEDIR_NIVEL
+NIVEL_SELECCIONADO: .asciz "   "
+
+
+//------------------------------------------- Pedir fila y columna-----------------------------------------------------//
+PEDIR_FILA: .asciz "\033[34mINGRESE NUMERO DE FILA: \033[0m\n"
 LONGITUD_PEDIR_FILA= .-PEDIR_FILA
 FILA_SELECCIONADA: .asciz "   "
 
-
-PEDIR_COLUMNA: .asciz "INGRESE NUMERO DE COLUMNA: \n"
+PEDIR_COLUMNA: .asciz "\033[34mINGRESE NUMERO DE COLUMNA: \033[0m\n"
 LONGITUD_PEDIR_COLUMNA= .-PEDIR_COLUMNA
 COLUMNA_SELECCIONADA: .asciz "   "
+
+
+//----------------------------------------- Mensajes casillas faltantes -------------------------------//
+MENSAJE_CASILLAS_FALTANTES_UNO: .asciz "\n\033[35mTE FALTAN DESCUBRIR "
+LONGITUD_MENSAJE_CASILLAS_FALTANTES_UNO= .-MENSAJE_CASILLAS_FALTANTES_UNO
+
+MENSAJE_CASILLAS_FALTANTES_VALOR: .asciz "  "
+LONGITUD_MENSAJE_CASILLAS_FALTANTES_VALOR= .-MENSAJE_CASILLAS_FALTANTES_VALOR
+
+MENSAJE_CASILLAS_FALTANTES_DOS: .asciz " CASILLAS PARA GANAR\033[0m\n"
+LONGITUD_MENSAJE_CASILLAS_FALTANTES_DOS= .-MENSAJE_CASILLAS_FALTANTES_DOS
+
+
+//--------------------------------------------Validaciones------------------------------------------//
+MENSAJE_POSICION_YA_COLOCADA: .asciz "\n\033[31mFLACO PUSISTE UNA POSICION YA INGRESADA\033[0m\n"   
+LONGITUD_MENSAJE_POSICION_YA_COLOCADA= .-MENSAJE_POSICION_YA_COLOCADA
+
+MENSAJE_TAMANIO_ERRONEO: .asciz "\n\033[31mEL TAMANIO INGRESADO DEBER SER 1 O 2, INGRESELO NUEVAMENTE...\033[0m\n\n"   
+LONGITUD_MENSAJE_TAMANIO_ERRONEO= .-MENSAJE_TAMANIO_ERRONEO
+
+MENSAJE_NIVEL_ERRONEO: .asciz "\n\033[31mEL NIVEL INGRESADO DEBER SER 1, 2 O 3, INGRESELO NUEVAMENTE...\033[0m\n\n"   
+LONGITUD_MENSAJE_NIVEL_ERRONEO= .-MENSAJE_NIVEL_ERRONEO
+
+MENSAJE_MODALIDAD_ERRONEO: .asciz "\n\033[31mEL MODO DE JUEGO INGRESADO DEBER SER 1 O 2, INGRESELO NUEVAMENTE...\033[0m\n\n"   
+LONGITUD_MENSAJE_MODALIDAD_ERRONEO= .-MENSAJE_MODALIDAD_ERRONEO
+
+MENSAJE_FILA_ERRONEO: .asciz "\n\033[31mLA FILA DEBE ESTAR DENTRO DEL RANGO DEL MAPA, INGRESALA NUEVAMENTE...\033[0m\n\n"   
+LONGITUD_MENSAJE_FILA_ERRONEO= .-MENSAJE_FILA_ERRONEO
+
+MENSAJE_COLUMNA_ERRONEO: .asciz "\n\033[31mLA COLUMNA DEBE ESTAR DENTRO DEL RANGO DEL MAPA, INGRESALA NUEVAMENTE...\033[0m\n\n"   
+LONGITUD_MENSAJE_COLUMNA_ERRONEO= .-MENSAJE_COLUMNA_ERRONEO
+
+MENSAJE_CARACTER_ERRONEO: .asciz "\n\033[31mSE DEBEN INGRESAR CARACTERES NUMERICOS, INGRESALA NUEVAMENTE...\033[0m\n\n"   
+LONGITUD_MENSAJE_CARACTER_ERRONEO= .-MENSAJE_CARACTER_ERRONEO
+
+
+
+// Color	    Código
+// Negro	    \033[30m
+// Rojo	            \033[31m
+// Verde	    \033[32m
+// Amarillo	    \033[33m
+// Azul	            \033[34m
+// Magenta	    \033[35m
+// Cyan	            \033[36m
+// Blanco	    \033[37m
+// Reset color	    \033[0m
 
 
 semilla: .word 0
@@ -140,8 +191,24 @@ LONGITUD_MAPA_DOCE_BOMBAS= .-MAPA_DOCE_BOMBAS
 
 POSICIONES_INGRESADAS_USUARIO: .asciz "----------------------------------------------------------------------------------------------------------------------------------------------------------------"
 
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                                               //
+//                                                                    SUBRUTINAS                                                                 //     
+//                                                                                                                                               //
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 .text
-////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                  //
+//                                              //imprimir//                                                        //
+//                                                                                                                  //
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //r2 la cantidad de caracteres a imprimir
 //r1 la direccion de la cadena
 imprimir:
@@ -155,11 +222,12 @@ push {r0, r7, lr}
 pop {r0, r7, lr}
 bx lr
 .fnend
-////////////////////////////////////////////////////////////////////////////////////////////////
 
-
-
-////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                  //
+//                                              //pedir_por_consola//                                               //
+//                                                                                                                  //
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //r2 la cantidad de caracteres que se van a ingresar
 //r1 cadena donde se va a guardar lo igresado
 pedir_por_consola:
@@ -173,11 +241,12 @@ push {r0, r7, lr}
 pop {r0, r7, lr}
 bx lr
 .fnend
-////////////////////////////////////////////////////////////////////////////////////////////////
 
-
-
-////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                  //
+//                                       //calcular_cantidad_bombas//                                               //
+//                                                                                                                  //
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // r1 = valor del mapa (1 es 8x8 =64, 2 es 12x12 = 144)
 // r2 = valor del nivel (1 si es facil -> 20%, 2 intermedio -> 30% y 3 dificil -> 50%)
 // r5 => salida cantidad de bombas
@@ -222,11 +291,12 @@ push {r3, r4, r6, r7, lr}
 pop {r3, r4, r6, r7, lr}
 bx lr
 .fnend
-////////////////////////////////////////////////////////////////////////////////////////////////
 
-
-
-////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                  //
+//                                       //generar_posiciones_bomba//                                               //
+//                                                                                                                  //
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // r1 => valor del mapa (1 es 8x8 =64, 2 es 12x12 = 144)
 // r5 => la cantidad de bombas
 generar_posiciones_bomba:
@@ -296,8 +366,11 @@ push {r0, r4, r7, r8, lr}
         
         bal ciclo_generar_randoms_ocho      // empezar devuelta
 
-    //////////////////////////////////////////////////////////
-    //////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                  //
+//                                         //ciclo_generar_randoms_doce//                                           //
+//                                                                                                                  //
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     ciclo_generar_randoms_doce:
         cmp r4, r5                          //si la cantidad de bombas generadas(r4) == las que necesitamos (r5)
@@ -342,11 +415,12 @@ salir_ciclo_generar_randoms:
 pop {r0, r4, r7, r8, lr}
 bx lr
 .fnend
-////////////////////////////////////////////////////////////////////////////////////////////////
 
-
-
-////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                  //
+//                                   //guardar_bombas_mapa_ocho_o_doce//                                            //
+//                                                                                                                  //
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // r0 => valor random
 // r12 => direccion del mapa para ingresar bombas
 // salida r10 => 1 si ya existe | 0 si no existe
@@ -373,10 +447,11 @@ salir_ciclo_colocar_bomba_ocho_o_doce:
 pop {r2, lr}
 bx lr
 .fnend
-//////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                  //
+//                                              //generarRandom//                                                   //
+//                                                                                                                  //
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 @hacemos un and con 15 para obtener el ultimo byte del numero aleatorio (0000 0000 0000 1111,
 @si aplicamos la logica del and, en todas las posiciones que sea 0 va a seguir siendo 0,
 @ y en las que sea uno va a ser igual a lo que contenga la semilla, ya que 1 AND A = A)
@@ -396,20 +471,21 @@ generarRandom:
 pop {r1,r2,r7,lr}
 bx lr
 .fnend
-//////////////////////////////////////////////////////////////////////////////////////////////////
 
-
-
-
-//////// YA EMPEZO EL JUEGO /////////////////////////////////////////
-
-//////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                  //
+//                                   //pedir_numero_de_fila_y_columna//                                             //
+//                                                                                                                  //
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // salida => r3 el valor numerico de la fila
 // salida => r4 el valor numerico de la columna
 pedir_numero_de_fila_y_columna:
 .fnstart
     push {r1, r2, r7, lr}
-        
+    
+        //-----------------------------------PEDIR FILA------------------------------------------//
+
+        ciclo_pedir_fila:
         ldr r1, =PEDIR_FILA                 // aparece en pantalla mensaje de pedir fila
         mov r2, $LONGITUD_PEDIR_FILA
         bl imprimir
@@ -418,12 +494,37 @@ pedir_numero_de_fila_y_columna:
         mov r2, #3
         bl pedir_por_consola
 
+        bl validar_en_cadena_todos_caracteres    // validamos que todos los caracteres sean numeros
+        cmp r0, #1
+        bne omitir_pedir_fila_nuevamente
+
+        pedir_fila_nuevamente_error_caracteres:
+        ldr r1, =MENSAJE_CARACTER_ERRONEO
+        mov r2, $LONGITUD_MENSAJE_CARACTER_ERRONEO
+        bl imprimir
+        bal ciclo_pedir_fila
+
+        pedir_fila_nuevamente_error_fuera_de_rango:
+        ldr r1, =MENSAJE_FILA_ERRONEO
+        mov r2, $LONGITUD_MENSAJE_FILA_ERRONEO
+        bl imprimir
+        bal ciclo_pedir_fila
+
+
+        omitir_pedir_fila_nuevamente:
         mov r0, r1                              // direccion del valor ingresado por el usuario
         bl caracter_numerico_a_decimal          // llamamos la subrutina que lo convierte
         mov r3, r4                              // valor numerico de la fila en r3
         //imprime pedir fila, pide fila por teclado y comvierte el caracter ingresado en valor numerico
+        
+        mov r5, r3
+        bl validacion_filas_columnas            // validamos si el numero ingresado esta dentro del rango
+        cmp r0, #1
+        beq pedir_fila_nuevamente_error_fuera_de_rango
 
-
+        //-----------------------------------PEDIR COLUMNA----------------------------------------//
+        
+        ciclo_pedir_columna:
         ldr r1, =PEDIR_COLUMNA              // aparece en pantalla mensaje de pedir columna
         mov r2, $LONGITUD_PEDIR_COLUMNA
         bl imprimir
@@ -432,21 +533,46 @@ pedir_numero_de_fila_y_columna:
         mov r2, #3
         bl pedir_por_consola
 
+        bl validar_en_cadena_todos_caracteres    // validamos que todos los caracteres sean numeros
+        cmp r0, #1
+        bne omitir_pedir_columna_nuevamente      //si no es uno omite
+
+        pedir_columna_nuevamente_error_caracteres:
+        ldr r1, =MENSAJE_CARACTER_ERRONEO
+        mov r2, $LONGITUD_MENSAJE_CARACTER_ERRONEO
+        bl imprimir
+        bal ciclo_pedir_columna
+
+        pedir_columna_nuevamente_error_fuera_de_rango:
+        ldr r1, =MENSAJE_COLUMNA_ERRONEO
+        mov r2, $LONGITUD_MENSAJE_COLUMNA_ERRONEO
+        bl imprimir
+        bal ciclo_pedir_columna
+
+
+        omitir_pedir_columna_nuevamente:
         mov r0, r1                              // direccion del valor ingresado por el usuario
         bl caracter_numerico_a_decimal          // llamamos la subrutina que lo convierte
         sub r4, #1                              // restamos uno a la columna  // en r4 tenemos el valor numerico de la columna
         
-        //imprime pedir fila, pide fila por teclado y comvierte el caracter ingresado en valor numerico
+        mov r5, r4
+        add r5, #1                              //sumamos uno para recuperar el restado previamente
+        bl validacion_filas_columnas            // validamos si el numero ingresado esta dentro del rango
+        cmp r0, #1
+        beq pedir_columna_nuevamente_error_fuera_de_rango
+        
 
+        //imprime pedir fila, pide fila por teclado y comvierte el caracter ingresado en valor numerico
         //hasta aca ya tenemos los valores numericos en los registros r3 y r4
         //en r3 el numero de fila, En r4 el numero de columna
 pop {r1, r2, r7, lr}
 bx lr
 .fnend
-//////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-//////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                  //
+//                                      //caracter_numerico_a_decimal//                                             //
+//                                                                                                                  //
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //---------------------------------------------Obtener valor numerico de una cadena de numeros---------------------------------------------
 //r0 se recibe la direccion de la cadena
 //salida => r4 devuevle el valor numerico de la cadena
@@ -479,11 +605,59 @@ caracter_numerico_a_decimal:
 pop {r2, r5, lr}
 bx lr
 .fnend
-//////////////////////////////////////////////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                  //
+//                                              //decimal_a_caracter//                                              //
+//                                                                                                                  //
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//---------------------------------------------Convertir numero a cadena de caracteres---------------------------------------------
+//r0 recibe el numero a convertir
+//r1 recibe la direccion de memoria para guardar la cadena
+decimal_a_caracter:
+.fnstart
+push {r0, r5, r6, r7, r11, lr}
+
+    mov r5, #10             // divisor base
+    mov r11, #1             // le sumamos uno para desplazar al segundo caracter
+
+    mov r4, #'0'              // limpiamos la cadena antes de empezar
+    strb r4, [r1]
+    strb r4, [r1, r11]
+
+    ciclo_convertir_numeros_caracteres:
+        cmp r0, #0
+        beq salir_ciclo_convertir_numeros_caracteres
+        
+        udiv r6, r0, r5                 // r6 = r0 / 10 (cociente)
+        mul r7, r6, r5                  // r7 = r6 * 10
+        sub r7, r0, r7                  // r7 = r0 - r7 = resto
+        add r7, r7, #0x30               // convertir a ascii
+        strb r7, [r1, r11]              // guardar caracter
+        sub r11, #1
+
+        mov r0, r6                      //guarda en r0 resto
+        bal ciclo_convertir_numeros_caracteres
+
+salir_ciclo_convertir_numeros_caracteres:    
+pop {r0, r5, r6, r7, r11, lr}
+bx lr
+.fnend
+//
+//r0 = 12
+//r6 = 12/10 =  1
+//r7 = 1 * 10 = 10
+//r7 = 12 - 10 = 2
+//r7 = 2 + 0x30 = 0x32
+//cadena "12"
+//r0 = 1 (r6)
 
 
-
-//////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                  //
+//                                               //calcular_posicion//                                              //
+//                                                                                                                  //
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //r1 recibe la direccion del tamaño del mapa
 //r3 recibe la fila
 //r4 recibe la columna
@@ -526,10 +700,12 @@ salir_calcular_posicion_mapa:
 pop {r2, r3, r6, r7, lr}
 bx lr
 .fnend
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-
-//////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                  //
+//                                         //validar_y_agregar_posicion_ingresada//                                 //
+//                                                                                                                  //
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //r5 => esta la posicion ingresada por el usuario en numero
 //devuelve en r8 1 si ya eligio la posicion y 0 si no
 validar_y_agregar_posicion_ingresada:
@@ -552,11 +728,12 @@ salir_validar_posicion_ingresada:
 pop {r1, r2, r7, lr}
 bx lr
 .fnend
-//////////////////////////////////////////////////////////////////////////////////////////////////
 
-
-
-//////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                  //
+//                                          //chequeamos_bomba_mapa//                                               //
+//                                                                                                                  //
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //r3 => recibe la direccion del mapa con bombas
 //r5 => esta la posicion de la bomba
 //devuelve en r8 0 si la posicion no tiene bomba,  1 si la posicion tiene bomba.
@@ -577,11 +754,12 @@ salir_chequeamos_bomba_mapa:
 pop {r4, lr}
 bx lr
 .fnend
-//////////////////////////////////////////////////////////////////////////////////////////////////
 
-
-
-//////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                  //
+//                                          //calcular_bombas_aledanias//                                           //
+//                                                                                                                  //
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //r1 => el mapa con las bombas 
 //r4 => la cantidad para moverse arriba y abajo
 //r5 => la posicion elegida
@@ -628,15 +806,24 @@ add r8, #0x30
 pop {r2, r5, r6, lr}
 bx lr
 .fnend
-//////////////////////////////////////////////////////////////////////////////////////////////////
 
-
-
-//////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                  //
+//                                          //cantidad_lugares_a_detectar//                                         //
+//                                                                                                                  //
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //r10 => devuelve la cantidad de lugares a detectar
 cantidad_lugares_a_detectar:
 .fnstart
 push {r2, r3, lr}
+
+        ldr r1, =MODALIDAD_SELECCIONADA      
+        ldrb r2, [r1]                        // 1 es niveles normales , 2 es bombas def x el usuario
+
+        cmp r2, #0x32
+        beq cantidad_lugares_definidas_usuario
+
+        //-------------------------------Modalidad Niveles ------------------------------------//
         ldr r3, =NIVEL_SELECCIONADO // direccion del nivel seleccionado
         ldrb r2, [r3]
         mov r10, #0                      //cantidad de lugares a detectar sin minas para ganar
@@ -656,16 +843,37 @@ push {r2, r3, lr}
 
         cantidad_lugares_final:
         mov r10, #25                         // si es el nivel final
+        bal salir_calcular_lugares
+
+
+        //-------------------------------Modalidad Bombas Usuario ------------------------------------//
+        cantidad_lugares_definidas_usuario:
+        ldr r0, =CANTIDAD_DE_BOMBAS_SELECCIONADAS           //en r0 le pasamos la direccion de la cadena
+        bl caracter_numerico_a_decimal                      //en r4 devuelve el valor numerico
+
+        ldr r3, =TAMANIO_SELECCIONADO                       // mapa de 8 o 12
+        ldrb r2, [r3]   
+        cmp r2, #0x31                                       //if tamaño mapa 8 o 12
+        beq es_mapa_ocho                               
+        
+        mov r6, #144
+        sub r10, r6, r4                                     // r10 = 144 - r4(bombas ingresadas por el usuario)
+        bal salir_calcular_lugares
+
+        es_mapa_ocho:
+            mov r6, #64                                    // mapa ocho
+            sub r10, r6, r4                                // r10 = 64 - r4(bombas ingresadas por el usuario)  
 
 salir_calcular_lugares:
 pop {r2, r3, lr}
 bx lr
 .fnend
-//////////////////////////////////////////////////////////////////////////////////////////////////
 
-
-
-//////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                  //
+//                                         //juntar_mapa_usuario_bomba//                                            //
+//                                                                                                                  //
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //r1 recibe la direccion del mapa del usuario
 //r3 recibe la direccion del mapa del con bombas
 //r2 recibe la longitud del mapa
@@ -695,11 +903,12 @@ salir_juntar_mapa:
 pop {r2, r3, r4, r6, lr}
 bx lr
 .fnend
-//////////////////////////////////////////////////////////////////////////////////////////////////
 
-
-
-//////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                  //
+//                                         //imprimir_bombas_faltantes//                                            //
+//                                                                                                                  //
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //r10 => recibe la cantidad de bombas totales
 //r11 => recibe la cantidad de bombas ingresadas por el usuario
 imprimir_bombas_faltantes:
@@ -708,31 +917,33 @@ push {r1, r2, r4, r7, lr}
 
         mov r7, #0
         sub r7, r10, r11      // en r7 guardo las bombas faltantes
-        ldr r1, =MENSAJE_BOMBAS_FALTANTES_VALOR
-        strb r7, [r1]
         
-        ldr r1, =MENSAJE_BOMBAS_FALTANTES_UNO
-        mov r2, $LONGITUD_MENSAJE_BOMBAS_FALTANTES_UNO
+        ldr r1, =MENSAJE_CASILLAS_FALTANTES_VALOR
+        mov r0, r7
+        bl decimal_a_caracter
+        // strb r7, [r1]
+        
+        ldr r1, =MENSAJE_CASILLAS_FALTANTES_UNO
+        mov r2, $LONGITUD_MENSAJE_CASILLAS_FALTANTES_UNO
         bl imprimir
 
-        mov r4, #12
-        ldr r1, =MENSAJE_BOMBAS_FALTANTES_VALOR
-        mov r2, r4
+        ldr r1, =MENSAJE_CASILLAS_FALTANTES_VALOR
+        mov r2, $LONGITUD_MENSAJE_CASILLAS_FALTANTES_VALOR
         bl imprimir
         
-        ldr r1, =MENSAJE_BOMBAS_FALTANTES_DOS
-        mov r2, $LONGITUD_MENSAJE_BOMBAS_FALTANTES_DOS
+        ldr r1, =MENSAJE_CASILLAS_FALTANTES_DOS
+        mov r2, $LONGITUD_MENSAJE_CASILLAS_FALTANTES_DOS
         bl imprimir
 
         
 pop {r1, r2, r4, r7, lr}
 bx lr
 .fnend
-//////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-
-//////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                  //
+//                                              //terminar_juego//                                                  //
+//                                                                                                                  //
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //r3 => recibe la direccion del mapa con bombas
 terminar_juego:
 .fnstart
@@ -747,11 +958,11 @@ push {r1, r2, lr}
 pop {r1, r2, lr}
 bx lr
 .fnend
-//////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-
-//////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                  //
+//                                               //ganar_juego//                                                    //
+//                                                                                                                  //
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //r3 => recibe la direccion del mapa con bombas
 ganar_juego:
 .fnstart
@@ -767,13 +978,148 @@ push {r1, r2, lr}
 pop {r1, r2, lr}
 bx lr
 .fnend
-//////////////////////////////////////////////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                  //
+//                                        //validar_cadena_numerica_en_rango//                                      //
+//                                                                                                                  //
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//r1 => recibe la cadena a validar
+//r2 => recibe el max del rango
+//r0 devuelve 1 si es un numero erroneo, 0 si esta bien
+validar_cadena_numerica_en_rango:
+.fnstart
+push {r3, r4, lr}
+
+        mov r0, #0    // inicializo el flag
+        mov r3, #0    // contador   //0/1/2
+
+        ciclo_validar_numero_en_rango:      //(cadena "2  ")
+        ldrb r4, [r1, r3]
+        
+        cmp r4, #0                                            // si es nulo, me voy del ciclo
+        beq salir_validar_cadena_numerica_en_rango
+
+        cmp r3, #1                                 //salta en la segunda iteracion a verificar si es un espacio
+        bge validar_espacio
+
+        cmp r4, #0x31                              // si r4 es menor que 1 salta a error
+        blt validar_numero_error
+
+        cmp r4, r2                                 // si r4 es mayor al numero maximo  salta a error
+        bgt validar_numero_error
+
+        add r3, #1                                 // si el numero esta bien sigue al proximo caracter
+        bal ciclo_validar_numero_en_rango
+
+        validar_espacio:
+        cmp r4, #'\n'
+        beq salir_validar_cadena_numerica_en_rango
+        
+        cmp r4, #' '                               // si r4 no es un espacio salta a error
+        bne validar_numero_error 
+
+        add r3, #1                                 // si es un espacio sigue al proximo caracter
+        bal ciclo_validar_numero_en_rango              
+
+        validar_numero_error:
+        mov r0, #1                                  // seteo r0 en 1, y me voy de la subrutina
+
+salir_validar_cadena_numerica_en_rango:   
+pop {r3, r4, lr}
+bx lr
+.fnend
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                  //
+//                             //validar_en_cadena_todos_caracteres//                                               //
+//                                                                                                                  //
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//r1 => recibe la cadena a validar
+//r0 devuelve 1 si es un numero erroneo, 0 si esta bien
+validar_en_cadena_todos_caracteres:
+.fnstart
+push {r3, r4, lr}
+
+        mov r0, #0    // inicializo el flag
+        mov r3, #0    // contador   //0/1/2
+
+        ciclo_cadena_todos_caracteres:
+        ldrb r4, [r1, r3]
+
+        cmp r4, #'\n'                                          // si es \n, me voy del ciclo
+        beq salir_validar_en_cadena_todos_caracteres
+
+        cmp r4, #0                                            // si es nulo, me voy del ciclo
+        beq salir_validar_en_cadena_todos_caracteres
+
+        cmp r4, #0x30                                        // si r4 es menor que 0 salta a error
+        blt validar_cadena_de_numeros_error
+
+        cmp r4, #0x39                                        // si r4 es mayor que 9 salta a error
+        bgt validar_cadena_de_numeros_error
+
+        add r3, #1                                           // si el caracter es un numero, sigue al proximo caracter
+        bal ciclo_cadena_todos_caracteres            
+
+        validar_cadena_de_numeros_error:
+        mov r0, #1                                            // seteo r0 en 1, y me voy de la subrutina
+
+salir_validar_en_cadena_todos_caracteres:   
+pop {r3, r4, lr}
+bx lr
+.fnend
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                                                  //
+//                                      //validacion_filas_columnas//                                               //
+//                                                                                                                  //
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+//r5 => recibimos el valor numerico de la fila o columna
+//r0 devuelve 1 si es un numero erroneo, 0 si esta bien
+validacion_filas_columnas:
+.fnstart
+push {r1, r2, r3, lr}
+
+        mov r0, #0    // inicializo el flag
+        
+        ldr r3, =TAMANIO_SELECCIONADO
+        ldrb r1, [r3]
+        cmp r1, #0x31                                  // verifica si el mapa del usuario es 8
+        beq validar_filas_columnas_ocho
+        
+        mov r2, #12                                   // seteamos r2 en 12, para que sea el maximo disponible dentro del rango
+        bal omitir_valida_filas_columnas_ocho
+
+        validar_filas_columnas_ocho:
+        mov r2, #8                                      // seteamos r2 en 8, para que sea el maximo disponible dentro del rango
+        
+
+        omitir_valida_filas_columnas_ocho:
+        cmp r5, #0                              
+        ble validar_fila_columna_error          //si es menos o igual a cero salta a error
+
+        cmp r5, r2
+        ble salir_validacion_filas_columnas     //si entra aca esta en el rango (1 a 8 || 1 a 12)
+
+        validar_fila_columna_error:
+        mov r0, #1                                       // seteo r0 en 1, y me voy de la subrutina
+
+salir_validacion_filas_columnas:
+pop {r1, r2, r3, lr}
+bx lr
+.fnend
+
+
 
 
 .global main
 main:
 
-//------------------------------------------ Presentacion, ingresar nombre, dificultad y tamanio de mapa -------------------------------------------//
+//----------------------- Presentacion, ingresar nombre, dificultad y tamanio de mapa -------------------------------------------//
 
         ldr r1, =MENSAJE_PRESENTACION_DIBUJO
         mov r2, $LONGITUD_MENSAJE_PRESENTACION_DIBUJO
@@ -784,33 +1130,90 @@ main:
         bl imprimir
 
 
-        ldr r1, =PEDIR_NOMBRE
-        mov r2, $LONGITUD_PEDIR_NOMBRE
+        ldr r1, =MENSAJE_PEDIR_NOMBRE
+        mov r2, $LONGITUD_MENSAJE_PEDIR_NOMBRE
         bl imprimir
 
         ldr r1, =NOMBRE_JUGADOR
         mov r2, #20
         bl pedir_por_consola
 
-
-        ldr r1, =PEDIR_TAMANIO_MAPA
-        mov r2, $LONGITUD_PEDIR_TAMANIO_MAPA
+//--------------------------------TAMAÑO MAPA-----------------------------//
+        pedir_tamanio_mapa:
+        ldr r1, =MENSAJE_PEDIR_TAMANIO_MAPA
+        mov r2, $LONGITUD_MENSAJE_PEDIR_TAMANIO_MAPA
         bl imprimir
 
         ldr r1, =TAMANIO_SELECCIONADO
         mov r2, #3
         bl pedir_por_consola
 
+        mov r2, #0x32                                            // el maximo del rango es 2
+        bl validar_cadena_numerica_en_rango                      // validamos el numero ingresado
+        cmp r0, #1
+        bne omitir_tamanio_seleccionado_erroneo                 // si no es error lo salteamos
 
-        ldr r1, =PEDIR_NIVEL
-        mov r2, $LONGITUD_PEDIR_NIVEL
+        tamanio_seleccionado_erroneo:
+        ldr r1, =MENSAJE_TAMANIO_ERRONEO                     // mensaje en pantalla
+        mov r2, $LONGITUD_MENSAJE_TAMANIO_ERRONEO
+        bl imprimir
+        bal pedir_tamanio_mapa                                 // volvemos a pedir tamaño
+
+
+        
+//--------------------------------CONDICION MODO DE JUEGO-----------------------------//
+        omitir_tamanio_seleccionado_erroneo:
+        pedir_modalidad_mapa:
+        ldr r1, =MENSAJE_CONSULTAR_MODALIDAD
+        mov r2, $LONGITUD_MENSAJE_CONSULTAR_MODALIDAD
+        bl imprimir
+
+        ldr r1, =MODALIDAD_SELECCIONADA
+        mov r2, #3
+        bl pedir_por_consola
+        
+        mov r2, #0x32                                            // el maximo del rango es 2
+        bl validar_cadena_numerica_en_rango                      // validamos el numero ingresado
+        cmp r0, #1
+        bne omite_modalidad_seleccionada_erronea
+
+        modalidad_seleccionado_erroneo:
+        ldr r1, =MENSAJE_MODALIDAD_ERRONEO                     // mensaje en pantalla
+        mov r2, $LONGITUD_MENSAJE_MODALIDAD_ERRONEO
+        bl imprimir
+        bal pedir_modalidad_mapa                                 // volvemos a pedir tamaño
+
+
+        omite_modalidad_seleccionada_erronea:
+        ldr r1, =MODALIDAD_SELECCIONADA
+        ldrb r2, [r1]                  // valor de la modalidad seleccionada 0x31 o 0x32 
+        cmp r2, #0x32                  //if de la modalidad, si seleeciono 0x32 omitimos los niveles
+        beq pedir_cantidad_bombas
+
+
+//--------------------------------NIVELES MAPA-----------------------------------//
+        pedir_nivel_mapa:
+        ldr r1, =MENSAJE_PEDIR_NIVEL
+        mov r2, $LONGITUD_MENSAJE_PEDIR_NIVEL
         bl imprimir
 
         ldr r1, =NIVEL_SELECCIONADO
         mov r2, #3
         bl pedir_por_consola
 
-        
+        mov r2, #0x33                                            // el maximo del rango es 3
+        bl validar_cadena_numerica_en_rango                      // validamos el numero ingresado
+        cmp r0, #1
+        bne omitir_nivel_seleccionado_erroneo                 // si no es error lo salteamos
+
+        nivel_seleccionado_erroneo:
+        ldr r1, =MENSAJE_NIVEL_ERRONEO                     // mensaje en pantalla
+        mov r2, $LONGITUD_MENSAJE_NIVEL_ERRONEO
+        bl imprimir
+        bal pedir_nivel_mapa                                 // volvemos a pedir tamaño
+    
+
+        omitir_nivel_seleccionado_erroneo:
         ldr r0, =TAMANIO_SELECCIONADO
         ldrb r1, [r0]
         
@@ -819,19 +1222,39 @@ main:
         
         bl calcular_cantidad_bombas         // calculamos la cantidad de bombas
                                             // en r5 esta el valor de hexadecimal de las cantidad de bombas que tiene el mapa 
+        bal omitir_pedir_cantidad_bombas    // omitimos 
+        
+//--------------------------------Modo cantidad de bombas del usuario-----------------------------//
+        
+        pedir_cantidad_bombas:
+        ldr r1, =MENSAJE_PEDIR_CANTIDAD_DE_BOMBAS
+        mov r2, $LONGITUD_MENSAJE_PEDIR_CANTIDAD_DE_BOMBAS
+        bl imprimir
 
+        ldr r1, =CANTIDAD_DE_BOMBAS_SELECCIONADAS
+        mov r2, #3
+        bl pedir_por_consola
+
+        mov r0, r1                                  //le pasamos la direccion de la cadena
+        bl caracter_numerico_a_decimal              //en r5 tenemos el valor de bombas que ingreso el usuario
+        mov r5, r4                                  //en r4 devuelve el valor numerico    
+        
+//-------------------------------------- Generar bombas----------------------------------//
+        omitir_pedir_cantidad_bombas:
+        
         ldr r0, =TAMANIO_SELECCIONADO
         ldrb r1, [r0]
         bl generar_posiciones_bomba
 
-        ldr r1, =MAPA_OCHO_BOMBAS
-        mov r2, $LONGITUD_MAPA_OCHO_BOMBAS
-        bl imprimir
+        //mostrar mapa usuario
 
-        ldr r1, =MAPA_DOCE_BOMBAS
-        mov r2, $LONGITUD_MAPA_DOCE_BOMBAS
-        bl imprimir
+        // ldr r1, =MAPA_OCHO_BOMBAS
+        // mov r2, $LONGITUD_MAPA_OCHO_BOMBAS
+        // bl imprimir
 
+        // ldr r1, =MAPA_DOCE_BOMBAS
+        // mov r2, $LONGITUD_MAPA_DOCE_BOMBAS
+        // bl imprimir
 
 
 //---------------------------------------------------------- Pedir fila y columna -----------------------------------------------------------------//
@@ -864,6 +1287,9 @@ main:
         bl imprimir
         bal pedir_filas_columnas                              // volvemos a pedir fila y columna
 
+
+//---------------------------------------------------------- Chequeo de bombas -----------------------------------------------------------------//
+
         omitir_posicion_ya_ingresada:
         ldr r0, =TAMANIO_SELECCIONADO
         ldrb r1, [r0]
@@ -883,6 +1309,8 @@ main:
         cmp r8, #1                                // si hay bomba
         beq llamar_terminar_juego
  
+
+//---------------------------------------------------------- Contar bombas aledanias -----------------------------------------------------------------//
 
         ldr r0, =TAMANIO_SELECCIONADO
         ldrb r1, [r0]
@@ -907,12 +1335,14 @@ main:
         strb r8, [r1,r5]                             // en r5 ya tenemos la posicio del usuario
 
 
-
         omitir_contamos_bombas_aledanias_ocho:
         ldr r0, =TAMANIO_SELECCIONADO
         ldrb r1, [r0]
         cmp r1, #0x31                                  // verifica si el mapa del usuario es 8
         bne mostrar_mapa_usuario_doce                  // si es distinto es 12
+
+
+//---------------------------------------------------------- Mostaramos mapa -----------------------------------------------------------------//
 
         
         ldr r1, =MAPA_OCHO                              // mostramos mapa del usuario si es 8x8
@@ -928,12 +1358,10 @@ main:
         add r11, #1                                     // sumamos uno al contador de posiciones ingresadas por el usuario
         bal pedir_filas_columnas                        // volvemos a pedir fila y columna
 
-
        
+////////////////////////////////////////////////////////// JUEGO TERMINADO //////////////////////////////////////////////////////////////////////
 
-
-       
-       ///////////////////////////////////////////////  JUEGO TERMINADO  ////////////////////////////////////////////////////////
+       //--------------------------------------------- Perdio el juego ------------------------------------------------------//
         
         llamar_terminar_juego:                  //cae aca en el caso de que haya seleccionado una posicion con bomba
         bl terminar_juego                       //muestra una cadena de que perdio el juego          
@@ -971,8 +1399,7 @@ main:
         omitir_modificar_mapa_ocho:
         bal fin_de_todo
         
-        //--------------------------------------- Fin modificar mapa derrota ---------------------------------------------------//
-
+       //--------------------------------------------- Gano el juego ------------------------------------------------------//
         llamar_ganar_juego:
         bl ganar_juego
 
