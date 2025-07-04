@@ -19,7 +19,7 @@ LONGITUD_MENSAJE_JUEGO_GANADO_DIBUJO= .-MENSAJE_JUEGO_GANADO_DIBUJO
 
 
 //------------------------------------------ Pedir usuario ------------------------------------------------------//
-MENSAJE_PEDIR_NOMBRE: .asciz "\033[96;4mINGRESE SU NOMBRE:       (no mas de 20 maracteres)\033[0m\n"
+MENSAJE_PEDIR_NOMBRE: .asciz "\033[96;4mINGRESE SU NOMBRE:       (menos de 20 caracteres)\033[0m\n"
 LONGITUD_MENSAJE_PEDIR_NOMBRE= .-MENSAJE_PEDIR_NOMBRE
 NOMBRE_JUGADOR: .ascii "                    "
 
@@ -27,35 +27,35 @@ NOMBRE_JUGADOR: .ascii "                    "
 //------------------------------------------ Pedir tamaño de mapa ------------------------------------------------------//
 MENSAJE_PEDIR_TAMANIO_MAPA: .asciz "\033[96mELEGIR TAMAÑO DEL MAPA:       (ingrese 1 o 2)\n-1: 8x8 \n-2: 12x12\033[0m\n"
 LONGITUD_MENSAJE_PEDIR_TAMANIO_MAPA= .-MENSAJE_PEDIR_TAMANIO_MAPA
-TAMANIO_SELECCIONADO: .asciz "   "
+TAMANIO_SELECCIONADO: .asciz "                    "
 
 
 //------------------------------------------- Consultar modalidad ----------------------------------------------------//
 MENSAJE_CONSULTAR_MODALIDAD: .asciz "\033[96mElIJA EL MODO DE JUEGO:      (ingrese 1 o 2)\n-1: Niveles definidos \n-2: Eleji la cantidad de bombas (PARA EXPERTOS, ADIVINAR TODAS LAS CASILLAS SIN BOMBAS!! 😎)\033[0m\n"
 LONGITUD_MENSAJE_CONSULTAR_MODALIDAD= .-MENSAJE_CONSULTAR_MODALIDAD
-MODALIDAD_SELECCIONADA: .asciz "   "
+MODALIDAD_SELECCIONADA: .asciz "                    "
 
 
 //------------------------------------------- Pedir cantidad de bombas -----------------------------------------------//
 MENSAJE_PEDIR_CANTIDAD_DE_BOMBAS: .asciz "\033[96mELIJA LA CANTIDAD DE BOMBAS EN EL MAPA: \033[0m\n"
 LONGITUD_MENSAJE_PEDIR_CANTIDAD_DE_BOMBAS= .-MENSAJE_PEDIR_CANTIDAD_DE_BOMBAS
-CANTIDAD_DE_BOMBAS_SELECCIONADAS: .asciz "   "
+CANTIDAD_DE_BOMBAS_SELECCIONADAS: .asciz "                    "
 
 
 //------------------------------------------- Pedir nivel ------------------------------------------------------------//
 MENSAJE_PEDIR_NIVEL: .asciz "\033[96mELEGIR NIVEL:       (ingrese 1, 2 o 3)\n-1: facil \n-2: intermedio \n-3: dificil\033[0m\n"
 LONGITUD_MENSAJE_PEDIR_NIVEL= .-MENSAJE_PEDIR_NIVEL
-NIVEL_SELECCIONADO: .asciz "   "
+NIVEL_SELECCIONADO: .asciz "                    "
 
 
 //------------------------------------------- Pedir fila y columna -----------------------------------------------------//
 MENSAJE_PEDIR_FILA: .asciz "\033[94mINGRESE NUMERO DE FILA: \033[0m\n"
 LONGITUD_MENSAJE_PEDIR_FILA= .-MENSAJE_PEDIR_FILA
-FILA_SELECCIONADA: .asciz "   "
+FILA_SELECCIONADA: .asciz "                    "
 
 MENSAJE_PEDIR_COLUMNA: .asciz "\033[94mINGRESE NUMERO DE COLUMNA: \033[0m\n"
 LONGITUD_MENSAJE_PEDIR_COLUMNA= .-MENSAJE_PEDIR_COLUMNA
-COLUMNA_SELECCIONADA: .asciz "   "
+COLUMNA_SELECCIONADA: .asciz "                    "
 
 //------------------------------------------- Extras Mapa -----------------------------------------------------//
 MENSAJE_CASILLA_ACERTADA: .asciz "\n\033[92mCasilla acertada 🎉🎈\033[0m\n"
@@ -66,6 +66,9 @@ LONGITUD_MENSAJE_NUMEROS_MAPA_OCHO= .-MENSAJE_NUMEROS_MAPA_OCHO
 
 MENSAJE_NUMEROS_MAPA_DOCE: .asciz "\n123456789012\n¯¯¯¯¯¯¯¯¯¯¯¯\n"
 LONGITUD_MENSAJE_NUMEROS_MAPA_DOCE= .-MENSAJE_NUMEROS_MAPA_DOCE
+
+SALTO_EN_LINEA: .asciz "\n"
+LONGITUD_SALTO_EN_LINEA= .-SALTO_EN_LINEA
 
 //----------------------------------------- Mensajes casillas faltantes -------------------------------//
 MENSAJE_CASILLAS_FALTANTES_UNO: .asciz "\n\033[95mTE FALTAN DESCUBRIR "
@@ -116,12 +119,15 @@ archi:    .asciz "nombrearchivo.txt"                // manejamos archivos de tex
 buffer1:  .space 450   			            // espacio para poner contenido archivo
 buffer2:  .ascii "   "	                            // cadena para modificar el archivo
 
-MENSAJE_APERTURA_ARCHIVO_ERROR: .asciz "\n\033[92;4mHUBO UN RE QUILOMBO ACA ATRAS, NO PUDIMOS ABRIR EL ARCHIVO, DISCULPASSS\033[0m\n"
+MENSAJE_APERTURA_ARCHIVO_ERROR: .asciz "\n\033[92;4mHUBO UN ERROR AL ABRIR EL ARCHIVO, VUELVE A INTENTARLO MAS TARDE!\033[0m\n"
 LONGITUD_MENSAJE_APERTURA_ARCHIVO_ERROR= .-MENSAJE_APERTURA_ARCHIVO_ERROR
 
 
 MENSAJE_RANKING_ULTIMO: .asciz "\n\033[93mEste es el ranking de los ultimos ganadores: \033[0m\n"
 LONGITUD_MENSAJE_RANKING_ULTIMO= .-MENSAJE_RANKING_ULTIMO
+
+MENSAJE_RANKING_PERDER: .asciz "\n\033[93mEste es tu tiempo: \033[0m\n"
+LONGITUD_MENSAJE_RANKING_PERDER= .-MENSAJE_RANKING_PERDER
 
 
 
@@ -503,7 +509,7 @@ pedir_numero_de_fila_y_columna:
         bl imprimir
 
         ldr r1, =FILA_SELECCIONADA          // el usuario ingresa el numero de fila
-        mov r2, #3
+        mov r2, #20
         bl pedir_por_consola
 
         bl validar_en_cadena_todos_caracteres    // validamos que todos los caracteres sean numeros
@@ -542,7 +548,7 @@ pedir_numero_de_fila_y_columna:
         bl imprimir
 
         ldr r1, =COLUMNA_SELECCIONADA       // el usuario ingresa el numero de columna
-        mov r2, #3
+        mov r2, #20
         bl pedir_por_consola
 
         bl validar_en_cadena_todos_caracteres    // validamos que todos los caracteres sean numeros
@@ -1464,7 +1470,7 @@ main:
         bl imprimir
 
         ldr r1, =TAMANIO_SELECCIONADO
-        mov r2, #3
+        mov r2, #20
         bl pedir_por_consola
 
         mov r2, #0x32                                            // el maximo del rango es 2
@@ -1488,7 +1494,7 @@ main:
         bl imprimir
 
         ldr r1, =MODALIDAD_SELECCIONADA
-        mov r2, #3
+        mov r2, #20
         bl pedir_por_consola
         
         mov r2, #0x32                                            // el maximo del rango es 2
@@ -1517,7 +1523,7 @@ main:
         bl imprimir
 
         ldr r1, =NIVEL_SELECCIONADO
-        mov r2, #3
+        mov r2, #20
         bl pedir_por_consola
 
         mov r2, #0x33                                            // el maximo del rango es 3
@@ -1551,7 +1557,7 @@ main:
         bl imprimir
 
         ldr r1, =CANTIDAD_DE_BOMBAS_SELECCIONADAS
-        mov r2, #3
+        mov r2, #20
         bl pedir_por_consola
 
         bl validar_en_cadena_todos_caracteres          // validamos que todos los caracteres sean numeros
@@ -1748,13 +1754,28 @@ main:
         bl imprimir                             //muestra el mapa del usuario con las bombas agregadas 
         
         omitir_modificar_mapa_ocho:
+
+        bl obtener_tiempo_final                           // obtenemos el tiempo en el que termina el juego
+
+        bl calcular_diferencia_de_tiempo                  // tiempo total de la partida
+        
+        bl generar_cadena_usuario_segundos                // nos devuelve en r2 la cant de caracteres de la cadena entera a escribir en el ranking
+        mov r8, r2                                        // guardamos la cant en r8
+        
+        ldr r1, =MENSAJE_RANKING_PERDER                   // mostramos mensaje: este es tu tiempo
+        mov r2, $LONGITUD_MENSAJE_RANKING_PERDER
+        bl imprimir   
+
+        ldr r1, =CADENA_USUARIO_MAS_SEGUNDOS              // mostramos el tiempo del jugador
+        mov r2, r8
+        bl imprimir  
+
         bal fin_de_todo
         
        //--------------------------------------------- Gano el juego ------------------------------------------------------//
         llamar_ganar_juego:
         bl ganar_juego
 
-        fin_de_todo:
         bl obtener_tiempo_final                         // obtenemos el tiempo en el que termina el juego
 
         bl calcular_diferencia_de_tiempo                // tiempo total de la partida
@@ -1774,6 +1795,10 @@ main:
         bl imprimir
 
 
-// fin_de_todo:
+fin_de_todo:
+ldr r1, =SALTO_EN_LINEA                               // mostramos un salto en linea
+mov r2, $LONGITUD_SALTO_EN_LINEA
+bl imprimir
+
 mov r7, #1
 swi 0
